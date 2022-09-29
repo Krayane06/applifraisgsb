@@ -297,5 +297,12 @@ class PdoGsb{
 		where fichefrais.idUtilisateur ='$idUtilisateur' and fichefrais.mois = '$mois'";
 		PdoGsb::$monPdo->exec($req);
 	}
+
+	public function getVisiteurs(){
+		$req = "select prenom, nom from Utilisateur where role='V'";
+		$res = PdoGsb::$monPdo->query($req);
+		$lesVisiteurs = $res->fetchAll();
+		return $lesVisiteurs;
+	}
 }
 ?>
